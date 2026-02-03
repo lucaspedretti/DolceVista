@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DolceVistaHotelVilla - Investissement Hôtellerie de Luxe Éco-Lifestyle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5f2d;
+            --primary-dark: #1a3a1b;
+            --accent: #c9a961;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+            --bg-light: #f8f7f4;
+            --shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 95, 45, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(44, 95, 45, 0.3), rgba(26, 58, 27, 0.5));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--text-light);
+            max-width: 1000px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            opacity: 0.95;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--text-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-light);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--bg-light);
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .stat-sublabel {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 0.5rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Why Now Section */
+        .why-now {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            border-left: 4px solid var(--accent);
+            background: var(--bg-light);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .feature-text {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 6rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .timeline-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-top: 3rem;
+        }
+
+        /* Project Gallery */
+        .gallery {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-caption h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Investment Metrics */
+        .metrics {
+            padding: 6rem 2rem;
+            background: var(--primary-dark);
+            color: var(--text-light);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .metric-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .metric-detail {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--text-light);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid, .feature-grid, .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/70d6176a-b0c5-4591-8f6d-d10fd5ebe641" alt="DolceVista Logo" class="logo">
+            <ul class="nav-menu">
+                <li><a href="#projet">Le Projet</a></li>
+                <li><a href="#investissement">Investissement</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><button class="cta-button" onclick="downloadDeck()">📄 Télécharger le Deck</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/c84c61f8-0e52-413a-878e-cbfbcf6751ae" alt="DolceVista Vue Sunset" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in">
+            <h1>Investissez dans l'Avenir de l'Hôtellerie de Luxe Éco-Lifestyle en Italie</h1>
+            <p class="hero-subtitle">DolceVistaHotelVilla : Première chaîne d'hôtels diffus dans les sites UNESCO italiens • TRI 13-14% • Sortie année 6</p>
+            <div class="hero-cta-group">
+                <button class="btn-primary" onclick="downloadDeck()">📥 Télécharger le Pitch Deck</button>
+                <a href="#investissement" class="btn-secondary">Découvrir les Chiffres</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Le Projet en Chiffres</h2>
+                <p class="section-subtitle">Une opportunité d'investissement sécurisée et rentable dans l'hôtellerie de luxe durable</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">4,36M€</div>
+                    <div class="stat-label">Investissement Total</div>
+                    <div class="stat-sublabel">Phase 1 + Phase 2</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">13-14%</div>
+                    <div class="stat-label">TRI (IRR)</div>
+                    <div class="stat-sublabel">Sortie Q4 2031</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">5,8M€</div>
+                    <div class="stat-label">Valorisation 2031</div>
+                    <div class="stat-sublabel">Triple méthode validée</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">8%+</div>
+                    <div class="stat-label">Rendement Annuel</div>
+                    <div class="stat-sublabel">Dès 2027 (pleine exploitation)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Now Section -->
+    <section class="why-now" id="projet">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Pourquoi Investir Maintenant ?</h2>
+                <p class="section-subtitle">Trois raisons majeures font de DolceVistaHotelVilla une opportunité unique en 2026</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🇮🇹</div>
+                    <h3 class="feature-title">Marché Porteur Inexploité</h3>
+                    <p class="feature-text">L'Italie est la <strong>5ème destination mondiale</strong> avec une demande croissante pour le luxe éco-responsable. Langhe Roero UNESCO offre un microclimat unique et un accès privilégié à Alba (foire truffe mondiale), Turin (45min), et Ligurie (90min). Infrastructure touristique inadaptée = opportunité majeure.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⏱️</div>
+                    <h3 class="feature-title">Timing Parfait</h3>
+                    <p class="feature-text"><strong>Phase 1 livrée T1 2026</strong> (Villa Arneis 7 chambres) avec revenus immédiats. <strong>Phase 2 T3 2027</strong> (3 villas neuves, 14 chambres) = exploitation complète. Permis obtenus, financements bancaires en cours, équipe opérationnelle en place. Le projet est <strong>déjà en construction</strong>.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💎</div>
+                    <h3 class="feature-title">Double Création de Valeur</h3>
+                    <p class="feature-text"><strong>Promotion immobilière interne</strong> : forte valorisation des actifs (+33% vs coût construction). <strong>Gestion hôtelière digitalisée</strong> : marges optimisées (48%), TO élevé (60-63% grâce foire truffe Oct-Nov). Triple réversibilité : vente immobilière, cession groupe hôtelier, ou hybride.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Metrics -->
+    <section class="metrics" id="investissement">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title" style="color: white;">Objectifs Financiers Sécurisés</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Des projections transparentes validées par notre comité stratégique et nos partenaires bancaires</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-box fade-in">
+                    <div class="metric-value">4 360 000 €</div>
+                    <div class="metric-label">Coût Total Projet</div>
+                    <div class="metric-detail">Phase 1: 1,93M€ • Phase 2: 2,43M€</div>
+                </div>
+                <div class="metric-box fade-in">
+                    <div class="metric-value">60-63%</div>
+                    <div class="metric-label">Taux d'Occupation</div>
+                    <div class="metric-detail">Boosté par foire truffe Alba (Oct-Nov)</div>
+                </div>
+                <div class="metric-box fade-in">
+                    <div class="metric-value">48%</div>
+                    <div class="metric-label">Marge Brute</div>
+                    <div class="metric-detail">EBITDA dès première année complète</div>
+                </div>
+                <div class="metric-box fade-in">
+                    <div class="metric-value">220-253€</div>
+                    <div class="metric-label">ADR Chambre</div>
+                    <div class="metric-detail">1300-1516€/jour pour villa entière</div>
+                </div>
+                <div class="metric-box fade-in">
+                    <div class="metric-value">2027</div>
+                    <div class="metric-label">Équilibre Financier</div>
+                    <div class="metric-detail">Cash-flow positif incluant dette</div>
+                </div>
+                <div class="metric-box fade-in">
+                    <div class="metric-value">Q4 2031</div>
+                    <div class="metric-label">Sortie Investisseurs</div>
+                    <div class="metric-detail">Valorisation 5,8M€ • TRI 13-14%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section" id="timeline">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Timeline du Projet</h2>
+                <p class="section-subtitle">De la naissance du concept en 2013 à la sortie des investisseurs en 2031 : 18 années de développement stratégique</p>
+            </div>
+            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/7035a209-b401-40cc-91ed-7bd381bab92b" alt="Timeline DolceVista 2013-2031" class="timeline-image fade-in">
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="gallery" id="galerie">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Les Villas DolceVista</h2>
+                <p class="section-subtitle">4 villas uniques au cœur des vignobles Langhe Roero UNESCO • Renders 3D & Plans Architecturaux</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/9295a2d7-6636-45a8-ab31-7de8d88ccbfd" alt="Villa Arneis Reception">
+                    <div class="gallery-caption">
+                        <h3>Villa Arneis - Réception & Lounge</h3>
+                        <p>7 chambres • Livraison T1 2026 • Piscine & espaces communs</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/902931cf-d1d9-4c9c-92ef-a1de3fbbe217" alt="Villa 1">
+                    <div class="gallery-caption">
+                        <h3>Villa 1 Neuve</h3>
+                        <p>4-5 chambres • Piscine privée • Livraison T3 2027</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/d7ab86a9-96c0-43c8-9f46-22829bd36199" alt="Villa 2">
+                    <div class="gallery-caption">
+                        <h3>Villa 2 Neuve</h3>
+                        <p>4-5 chambres • Design contemporain • Livraison T3 2027</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/af1112ca-4fec-4fe3-b16b-f34f03d3f25f" alt="Vue Ensemble">
+                    <div class="gallery-caption">
+                        <h3>Vue d'Ensemble Complexe</h3>
+                        <p>6 200 m² de terrain • Au cœur des vignobles</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/760539d1-717a-41cb-94e0-b25d736b8e1f" alt="Intérieur Luxe">
+                    <div class="gallery-caption">
+                        <h3>Intérieurs Haut de Gamme</h3>
+                        <p>Design éco-responsable • Matériaux locaux</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/0cfb4740-68bc-4d83-a61b-5275afeaf0f7" alt="Plan Paysagiste">
+                    <div class="gallery-caption">
+                        <h3>Aménagement Paysager</h3>
+                        <p>Jardins • Vignes • Espaces détente biodiversité</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container fade-in">
+            <h2>Rejoignez le Club Deal DolceVistaHotelVilla</h2>
+            <p>Investissement à partir de 10 000€ • Avantages exclusifs : nuitées offertes, réductions 20-25%, accès priorité futures ouvertures</p>
+            <div class="hero-cta-group">
+                <button class="btn-primary" onclick="downloadDeck()" style="background: white; color: var(--primary);">📥 Télécharger le Pitch Deck Complet</button>
+                <button class="btn-secondary" onclick="scheduleMeeting()">📞 Planifier une Réunion</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>DolceVistaHotelVilla srl</h3>
+                <p>Monteu Roero (CN), 12040</p>
+                <p>Piémont, Italie</p>
+                <p>📍 15min Alba • 45min Turin • 90min Gênes</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="#projet">Le Projet</a>
+                <a href="#investissement">Investissement</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#galerie">Galerie</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:invest@dolcevistahotelvilla.com">invest@dolcevistahotelvilla.com</a>
+                <a href="#" onclick="scheduleMeeting()">Planifier un Appel</a>
+                <a href="#" onclick="downloadDeck()">Télécharger le Deck</a>
+            </div>
+            <div class="footer-section">
+                <h3>Légal</h3>
+                <a href="#">Mentions Légales</a>
+                <a href="#">Politique de Confidentialité</a>
+                <p style="margin-top: 1rem; font-size: 0.85rem;">Ce document ne constitue pas une offre de vente. Investissement réservé à des investisseurs avertis.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 DolceVistaHotelVilla srl. Tous droits réservés. Design prototype par Sciences Po Finance.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Download deck function
+        function downloadDeck() {
+            alert('📄 Modal de téléchargement du Pitch Deck\n\nDans la version finale, ceci ouvrira un formulaire pour capturer:\n• Nom & Prénom\n• Email professionnel\n• Téléphone (optionnel)\n• Profil investisseur\n• Montant envisagé\n\nPuis déclenchera le téléchargement du PDF complet + email de suivi automatique.');
+        }
+
+        // Schedule meeting function
+        function scheduleMeeting() {
+            alert('📞 Planifier une Réunion\n\nDans la version finale, ceci ouvrira:\n• Calendly intégré pour sélectionner créneau\n• Ou formulaire contact avec demande de disponibilités\n• Email auto confirmant la demande sous 24h');
+        }
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.hero .fade-in').classList.add('visible');
+            }, 300);
+        });
+    </script>
+</body>
+</html>
